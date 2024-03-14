@@ -1,20 +1,19 @@
 <script lang="ts">
-  import TailwindCss from "./TailwindCSS.svelte";
-  import CreateAunComponent from "./components/CreateAunComponent.svelte";
   import PeraConnect from "./components/PeraConnectButton.svelte";
-  import { peraWallet } from "./algorand/peraWallet";
-  import AunViewComponent from "./components/AunViewComponent.svelte";
-
+  import { peraWallet } from "./algorand/WalletHandler";
+  import AanViewComponent from "./components/AanViewComponent.svelte";
+  import CreateAanComponent from "./components/CreateAanComponent.svelte";
+  import WalletConnectButton from "./components/WalletConnectButton.svelte";
   export const PeraWallet = peraWallet;
 </script>
 
 <main>
-  <div>
-    <h3 class="text-center text-2xl mt-8">Algorand Username Service!</h3>
+  <div class="text-center">
+    <div>
+      <h3 class="text-2xl mt-8">Algorand Alias Service!</h3>
+    </div>
+    <WalletConnectButton />
+    <CreateAanComponent />
+    <AanViewComponent />
   </div>
-  <PeraConnect />
-  <CreateAunComponent />
-  <AunViewComponent />
 </main>
-
-<TailwindCss />

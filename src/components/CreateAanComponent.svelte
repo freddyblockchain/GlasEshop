@@ -1,12 +1,12 @@
 <script lang="ts">
   import { connectedAddress } from "../store";
-  import { peraWallet } from "../algorand/peraWallet";
+  import { peraWallet } from "../algorand/WalletHandler";
   import Button from "./Button.svelte";
   import TextInput from "./TextInput.svelte";
   import {
     SignerTransaction,
-    createAunTransaction,
-  } from "@freddyblockchain/auns-utils";
+    createAanTransaction,
+  } from "@freddyblockchain/aans-utils";
   import { algodClient } from "../algorand/algoClient";
   import { Buffer } from "buffer";
   import algosdk, { assignGroupID } from "algosdk";
@@ -15,10 +15,10 @@
   const buttonPlaceholder = "Create Name"; // default placeholder text
   let value = "";
 
-  const handleCreateAun = async () => {
+  const handleCreateAan = async () => {
     if (peraWallet.isConnected) {
       alert("value is : " + value);
-      let transactions = await createAunTransaction(value, $connectedAddress);
+      let transactions = await createAanTransaction(value, $connectedAddress);
 
       transactions.forEach((signerTransaction: SignerTransaction) => {
         const group = signerTransaction.txn.group;
@@ -45,8 +45,8 @@
   };
 </script>
 
-<div class="flex justify-center items-center h-screen">
+<div class="border-gray-100 border-4 p-8">
   <TextInput placeholder={textPlaceholder} bind:value></TextInput>
-  <Button placeholder={buttonPlaceholder} buttonPressedAction={handleCreateAun}
+  <Button placeholder={buttonPlaceholder} buttonPressedAction={handleCreateAan}
   ></Button>
 </div>

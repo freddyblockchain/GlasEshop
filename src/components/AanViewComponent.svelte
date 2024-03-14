@@ -1,24 +1,24 @@
-<script>
+<script lang="ts">
   import {
-    getAunNames,
-    getAunAccountAddress,
-  } from "@freddyblockchain/auns-utils";
+    getAanNames,
+    getAanAccountAddress,
+  } from "@freddyblockchain/aans-utils";
   import TextInput from "./TextInput.svelte";
   import Button from "./Button.svelte";
 
   let value = "";
-  let correspondingAddress = "";
+  let correspondingAddress: string | undefined = "";
 
-  const lookupAun = async () => {
-    correspondingAddress = await getAunAccountAddress(value);
+  const lookupaan = async () => {
+    correspondingAddress = await getAanAccountAddress(value);
   };
 
-  let namesPromise = getAunNames(); // You initiate the promise here
+  let namesPromise = getAanNames();
 </script>
 
-<div>
-  <TextInput placeholder="AUN" bind:value />
-  <Button placeholder={"Lookup AUN"} buttonPressedAction={lookupAun} />
+<div class="flex justify-center items-center border-gray-100 border-4 p-8">
+  <TextInput placeholder="aan" bind:value />
+  <Button placeholder={"Lookup aan"} buttonPressedAction={lookupaan} />
   <TextInput
     placeholder="Corresponding Address"
     bind:value={correspondingAddress}
@@ -26,7 +26,7 @@
   />
 </div>
 {#await namesPromise then names}
-  <h3>Existing AUNs</h3>
+  <h3>Existing Algorand Alias Names</h3>
   <textarea disabled={true}>{names}</textarea>
 {/await}
 

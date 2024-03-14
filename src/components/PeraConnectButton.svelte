@@ -1,21 +1,24 @@
 <script>
   import { connectedAddress } from "../store";
-  import { peraWallet } from "../algorand/peraWallet";
+  import { peraWallet } from "../algorand/WalletHandler";
   import { onMount } from "svelte";
+  import Button from "./Button.svelte";
 
-  onMount(() => {
+  /*onMount(() => {
     // Reconnect to the session when the component is mounted
     peraWallet
       .reconnectSession()
       .then((accounts) => {
         // Setup the disconnect event listener
-        peraWallet.connector.on("disconnect", handleDisconnectWalletClick);
-        if (accounts.length) {
-          connectedAddress.set(accounts[0]);
+        if (peraWallet.connector) {
+          peraWallet.connector.on("disconnect", handleDisconnectWalletClick);
+          if (accounts.length) {
+            connectedAddress.set(accounts[0]);
+          }
         }
       })
       .catch((e) => console.log(e));
-  });
+  });*/
   export function handleConnectWalletClick() {
     peraWallet
       .connect()
@@ -43,21 +46,18 @@
   }
 </script>
 
-<div>
+<div class="border-gray-100 border-4 p-8">
+  <h3>Network: <b>Testnet</b></h3>
   Pera Connect
-  <button
-    on:click={$connectedAddress
-      ? handleDisconnectWalletClick
-      : handleConnectWalletClick}
-  >
-    {$connectedAddress ? "Disconnect" : "Connect to Pera Wallet"}
-  </button>
+  <Button
+    placeholder={$connectedAddress ? "Disconnect" : "Connect"}
+    buttonPressedAction={() => {
+      $connectedAddress
+        ? handleDisconnectWalletClick()
+        : handleConnectWalletClick();
+    }}
+  ></Button>
 </div>
 
 <style>
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
 </style>
