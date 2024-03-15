@@ -2,13 +2,8 @@
   import { connectedAddress } from "../store";
   import Button from "./Button.svelte";
   import TextInput from "./TextInput.svelte";
-  import {
-    SignerTransaction,
-    createAanTransaction,
-  } from "@freddyblockchain/aans-utils";
+  import { createAanTransaction } from "@freddyblockchain/aans-utils";
   import { algodClient } from "../algorand/algoClient";
-  import { Buffer } from "buffer";
-  import algosdk, { assignGroupID } from "algosdk";
   import { connectedWallet } from "../store";
   import { getWalletConnection } from "../algorand/WalletHandler";
 
