@@ -14,8 +14,11 @@
   function onSelectOption(option: WALLET_CONNECTION) {
     showModal.set(false); // Hide the modal after an option is selected
     // Additional logic based on the selected option
-    console.log("option is: " + option);
     handleConnectWalletClick(option);
+  }
+
+  function onClose() {
+    showModal.set(false);
   }
 </script>
 
@@ -26,7 +29,6 @@
       : "Connect Wallet"}
     buttonPressedAction={() => {
       if ($connectedWallet !== WALLET_CONNECTION.NONE) {
-        alert("connected wallet is :" + $connectedWallet);
         handleDisconnectWalletClick($connectedWallet);
       } else {
         showModal.set(true);
@@ -35,6 +37,6 @@
   ></Button>
   {#if $showModal}
     <!-- Use the Svelte store's value to conditionally render the modal -->
-    <Modal showModal={true} {onSelectOption} />
+    <Modal showModal={true} {onSelectOption} {onClose} />
   {/if}
 </div>

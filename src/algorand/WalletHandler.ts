@@ -9,7 +9,7 @@ import { connectedAddress, connectedWallet } from "../store";
 
 export enum WALLET_CONNECTION {NONE,PERA, DEFLY}
 
-function getWalletConnection(walletConnection: WALLET_CONNECTION){
+export function getWalletConnection(walletConnection: WALLET_CONNECTION){
   if(walletConnection === WALLET_CONNECTION.PERA){
     return peraWallet
   }
@@ -29,11 +29,8 @@ export function handleConnectWalletClick(walletConnection: WALLET_CONNECTION) {
       .connect()
       .then((newAccounts) => {
         // Setup the disconnect event listener
-        connection.connector.on("disconnect", handleDisconnectWalletClick);
         connectedAddress.set(newAccounts[0]);
         connectedWallet.set(walletConnection);
-        alert("here !!!")
-        console.log("set options and address " + connectedAddress + connectedWallet)
       })
       .catch((error) => {
         if (error.data && error.data.type !== "CONNECT_MODAL_CLOSED") {
@@ -44,10 +41,9 @@ export function handleConnectWalletClick(walletConnection: WALLET_CONNECTION) {
   }
 
   export function handleDisconnectWalletClick(walletConnection: WALLET_CONNECTION) {
-
     const connection = getWalletConnection(walletConnection)
+    console.log("wallet connection is: " + walletConnection)
     console.log(walletConnection, WALLET_CONNECTION.PERA, WALLET_CONNECTION.DEFLY, WALLET_CONNECTION.NONE);
-    console.log(connection)
     connection
       .disconnect()
       .then(() => {
