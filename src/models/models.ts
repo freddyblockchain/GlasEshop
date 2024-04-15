@@ -1,9 +1,15 @@
 type Project = {
     number: number;
-    buildlord: string;
+    buildLord: string;
+    totalAmount: number
   };
 
 type Contractor = {
     posNr: number,
     name: string
 }  
+
+type ContractPageData = {
+  project: Project,
+  contractors: Contractor[],
+}
