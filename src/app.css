@@ -66,6 +66,9 @@
  
     --ring: 0 0% 83.1%;
   }
+  /*div {
+    border: 1px solid red; /* Adds a red border to all div elements within this component
+  }*/
 }
  
 @layer base {
