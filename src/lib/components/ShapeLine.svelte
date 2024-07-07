@@ -24,6 +24,19 @@
       }
     }, 10);
   });
+
+  const calculateDistance = (
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number
+  ) => {
+    const xDiff = x2 - x1;
+    const yDiff = y2 - y1;
+    return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+  };
+
+  const distance = calculateDistance(point1.x, point1.y, point2.x, point2.y);
 </script>
 
 <Line
@@ -45,6 +58,6 @@
   config={{
     x: middlePoint.x - 8,
     y: middlePoint.y,
-    text: "text",
+    text: distance + " cm",
   }}
 />

@@ -27,7 +27,7 @@
   <ul class="list-none w-full flex flex-col items-center">
     <!-- Flex column for the list -->
     {#each $cornerPoints as { x, y }, index}
-      <li>Point {index + 1}: ({x}, {y})</li>
+      <li>Punkt {index + 1}: ({x}, {y})</li>
       <!-- Items are automatically centered because of parent ul -->
     {/each}
     <li class="w-full flex justify-center">
@@ -50,23 +50,9 @@
         />
       {/each}
       {#if isDone}
-        <Line
-          config={{
-            x: xOffset,
-            y: yOffset,
-            points: [
-              $cornerPoints[$cornerPoints.length - 1].x,
-              -$cornerPoints[$cornerPoints.length - 1].y,
-              $cornerPoints[0].x,
-              -$cornerPoints[0].y,
-            ],
-            tension: 0.5,
-            closed: true,
-            stroke: "black",
-            fillLinearGradientStartPoint: { x: -50, y: -50 },
-            fillLinearGradientEndPoint: { x: 50, y: 50 },
-            fillLinearGradientColorStops: [0, "red", 1, "yellow"],
-          }}
+        <ShapeLine
+          point1={$cornerPoints[$cornerPoints.length - 1]}
+          point2={$cornerPoints[0]}
         />
       {/if}
     </Layer>
