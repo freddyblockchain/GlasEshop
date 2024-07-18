@@ -1,9 +1,16 @@
 <script lang="ts">
   import { Button } from "$lib/components/ui/button";
   import { Stage, Layer, Rect, Line } from "svelte-konva";
-  import { cornerPoints, newPoint, xOffset, yOffset } from "../store";
+  import {
+    cornerPoints,
+    newPoint,
+    nrOfPoints,
+    xOffset,
+    yOffset,
+  } from "../store";
   import InputRow from "$lib/components/InputRow.svelte";
   import ShapeLine from "$lib/components/ShapeLine.svelte";
+  import NumberInput from "$lib/components/NumberInput.svelte";
   let points;
   var isDone = false;
 
@@ -13,12 +20,31 @@
     });
   }
 
+  $: {
+    nrOfPoints.subscribe((number) => {
+      if (!isNaN(number)) {
+        if ($nrOfPoints == 6) {
+          const point1 = {x: 0, y: 0}
+          const point2 = {x: 100, y: 0}
+          const point3 = {x: 100, y: 100}
+          const point4 = {x: 200, y: 100}
+          const point5 = {x: 200, y: 200}
+          const point6 = {x: 0, y: 200}
+          isDone = true
+          cornerPoints.update(() => [point1, point2, point3, point4, point5, point6]);
+        }
+      }
+    });
+  }
+
   const setIsDone = () => {
     isDone = true;
   };
 </script>
 
-<div class="flex flex-col justify-center items-center m-20">
+<NumberInput />
+
+<div class="flex flex-col justify-center items-center m-10">
   <h1 class="text-lg">Special mål!</h1>
 </div>
 <div class="flex flex-col justify-center items-center m-10">

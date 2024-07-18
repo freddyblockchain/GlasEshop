@@ -1,4 +1,4 @@
-import pkg from "file:///home/frederik/ProjektStyring/node_modules/tailwindcss/defaultTheme.js";
+import pkg from "file:///home/frederik/Downloads/GlasEshop/node_modules/tailwindcss/defaultTheme.js";
 const { fontFamily } = pkg;
 
 /** @type {import('tailwindcss').Config} */
