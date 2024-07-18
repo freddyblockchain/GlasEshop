@@ -17,8 +17,8 @@
   onMount(() => {
     setTimeout(() => {
       if (textNode && lineNode) {
-        textNode.zIndex(1);
-        lineNode.zIndex(2);
+        //textNode.zIndex(1);
+        //lineNode.zIndex(2);
       } else {
         console.error("Konva nodes are not initialized.");
       }

@@ -2,15 +2,20 @@
   import { cornerPoints, newPoint } from "../../store";
   import { Button } from "./ui/button";
 
-  let x = "";
-  let y = "";
+  export let x = 0;
+  export let y = 0;
+  export let index = 0;
 
-  const addPoint = () => {
-    const xValue = parseInt(x);
-    const yValue = parseInt(y);
-    cornerPoints.update((points) => [...points, { x: xValue, y: yValue }]);
-    newPoint.set(false);
+  const changePoints = (x: number, y: number) => {
+    cornerPoints.update((points) => {
+      const updatedPoints = [...points];
+      updatedPoints[index] = { x: x, y: y };
+      console.log("x is : " + x + "y is " + y)
+      return updatedPoints;
+    });
+    
   };
+  $: changePoints(x, y); 
 </script>
 
 <div class="flex flex-row">
@@ -18,5 +23,4 @@
   <input bind:value={x} placeholder="Tilføj x værdi" />
 
   <input bind:value={y} placeholder="Tilføj y værdi" />
-  <Button on:click={addPoint}>Tilføj Punkt</Button>
 </div>
