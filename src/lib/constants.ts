@@ -1,0 +1,1 @@
+export const windowWidthOffset = window.innerWidth / 4;

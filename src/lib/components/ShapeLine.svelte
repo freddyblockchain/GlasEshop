@@ -3,8 +3,8 @@
   import { xOffset, yOffset } from "../../store";
   import { onMount } from "svelte";
 
-  export let point1: CornerPoint = { x: 0, y: 0 };
-  export let point2: CornerPoint = { x: 0, y: 0 };
+  export let point1: CornerPoint = { x: 0, y: 0, letter: "" };
+  export let point2: CornerPoint = { x: 0, y: 0, letter: "" };
 
   const middlePoint = {
     x: (point1.x + point2.x) / 2 + xOffset,

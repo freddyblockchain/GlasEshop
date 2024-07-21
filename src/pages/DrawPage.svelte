@@ -11,6 +11,8 @@
   import InputRow from "$lib/components/InputRow.svelte";
   import ShapeLine from "$lib/components/ShapeLine.svelte";
   import NumberInput from "$lib/components/NumberInput.svelte";
+  import NodeCircle from "$lib/components/NodeCircle.svelte";
+  import { windowWidthOffset } from "$lib/constants";
   let points;
   var isDone = false;
 
@@ -22,15 +24,14 @@
 
   $: {
     nrOfPoints.subscribe((number) => {
-      const width = window.innerWidth / 4;
       if (!isNaN(number)) {
         if ($nrOfPoints == 6) {
-          const point1 = { x: 0 - width, y: 0 };
-          const point2 = { x: 100 - width, y: 0 };
-          const point3 = { x: 100 - width, y: 100 };
-          const point4 = { x: 200 - width, y: 100 };
-          const point5 = { x: 200 - width, y: 200 };
-          const point6 = { x: 0 - width, y: 200 };
+          const point1 = { x: 0 - windowWidthOffset, y: 0, letter: "A" };
+          const point2 = { x: 100 - windowWidthOffset, y: 0, letter: "B" };
+          const point3 = { x: 100 - windowWidthOffset, y: 100, letter: "C" };
+          const point4 = { x: 200 - windowWidthOffset, y: 100, letter: "D" };
+          const point5 = { x: 200 - windowWidthOffset, y: 200, letter: "E" };
+          const point6 = { x: 0 - windowWidthOffset, y: 200, letter: "F" };
           isDone = true;
           cornerPoints.update(() => [
             point1,
@@ -76,26 +77,21 @@
       config={{ width: window.innerWidth / 2, height: window.innerHeight }}
     >
       <Layer>
-        {#each $cornerPoints.slice(0, $cornerPoints.length - 1) as { x, y }, index}
+        {#each $cornerPoints as { x, y }, index}
           <ShapeLine
             point1={$cornerPoints[index]}
-            point2={$cornerPoints[index + 1]}
+            point2={$cornerPoints[(index + 1) % $cornerPoints.length]}
           />
+          <NodeCircle cornerPoint={$cornerPoints[index]} {index}></NodeCircle>
         {/each}
-        {#if isDone}
-          <ShapeLine
-            point1={$cornerPoints[$cornerPoints.length - 1]}
-            point2={$cornerPoints[0]}
-          />
-        {/if}
       </Layer>
     </Stage>
   </div>
   <div class="flex-col">
     {#each $cornerPoints as { x, y }, index}
-    <div>
-    <InputRow x={x} y = {y} index={index}/>
-    </div>
+      <div>
+        <InputRow {x} {y} {index} />
+      </div>
     {/each}
-</div>
+  </div>
 </div>

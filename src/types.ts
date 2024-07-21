@@ -1,4 +1,5 @@
 interface CornerPoint {
     x: number,
-    y: number
+    y: number,
+    letter: string,
 }
