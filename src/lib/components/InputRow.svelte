@@ -3,6 +3,7 @@
     calculateDistance,
     cornerPoints,
     newPoint,
+    getNewPointCoordinates,
     updatePoint,
   } from "../../store";
   import { Button } from "./ui/button";
@@ -23,14 +24,32 @@
     nextPoint.x,
     nextPoint.y
   );
+  let prevDistance = distance;
 
   const text =
     $cornerPoints[index].letter + "-" + $cornerPoints[nextPointIndex].letter;
 
-  const changePoints = (x: number, y: number) => {
-    updatePoint(x, y, index);
+  const distanceChanged = () => {
+    const newPointBasedOnDistance = getNewPointCoordinates(
+      $cornerPoints[index],
+      $cornerPoints[nextPointIndex],
+      prevDistance,
+      distance
+    );
+    console.log("prevDistance: " + prevDistance, "new distance" + distance);
+    console.log(
+      "new coordinates: " +
+        newPointBasedOnDistance.x +
+        " " +
+        newPointBasedOnDistance.y
+    );
+    updatePoint(
+      newPointBasedOnDistance.x,
+      newPointBasedOnDistance.y,
+      nextPointIndex
+    );
+    prevDistance = distance;
   };
-  $: changePoints(x, y);
 </script>
 
 <div class="flex justify-center items-center m-2">
@@ -40,12 +59,14 @@
   <p>x</p>
   <input
     class="w-36 border-2 border-gray-300 focus:border-blue-500 rounded-md p-1"
+    type="number"
     bind:value={x}
     placeholder="Tilføj x værdi"
   />
   <p>y</p>
   <input
     class="w-36 border-2 border-gray-300 focus:border-blue-500 rounded-md p-1"
+    type="number"
     bind:value={y}
     placeholder="Tilføj y værdi"
   />
@@ -54,7 +75,9 @@
     <h4>{text}:</h4>
     <input
       class="w-36 border-2 border-gray-300 focus:border-blue-500 rounded-md p-1"
-      value={distance}
+      type="number"
+      bind:value={distance}
+      on:change={distanceChanged}
     />
   </div>
 </div>

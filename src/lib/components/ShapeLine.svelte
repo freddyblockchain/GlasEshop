@@ -25,7 +25,7 @@
     }, 10);
   });
 
-  const distance = calculateDistance(point1.x, point1.y, point2.x, point2.y);
+  $: distance = calculateDistance(point1.x, point1.y, point2.x, point2.y);
 </script>
 
 <Line

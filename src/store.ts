@@ -33,3 +33,21 @@ export const calculateDistance = (
   const yDiff = y2 - y1;
   return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
 };
+
+export const getNewPointCoordinates = (A: CornerPoint, B: CornerPoint, originalDistance: number, newDistance: number): CornerPoint => {
+  const directionX = B.x - A.x;
+  const directionY = B.y - A.y;
+
+  // Calculate the magnitude of the original vector (distance from A to B, assumed to be 100)
+
+  // Calculate the unit vector components
+  const unitX = directionX / originalDistance;
+  const unitY = directionY / originalDistance;
+
+  // Calculate the new position of B based on the new distance
+  return {
+    x: A.x + unitX * newDistance,
+    y: A.y + unitY * newDistance,
+    letter: ''
+  };
+}
