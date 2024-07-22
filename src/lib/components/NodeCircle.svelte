@@ -13,20 +13,13 @@
 
     console.log("x us : " + x, "y is :" + y);
 
-    updatePoint(x - xOffset, y, index);
+    console.log("x offset is;: " + xOffset);
+
+    updatePoint(x - xOffset, yOffset - y, index);
 
     console.log("you even here?");
 
     // Additional logic using x and y
-  };
-  // Reactive declaration
-  $: circleConfig = {
-    x: xOffset + cornerPoint.x,
-    y: yOffset - cornerPoint.y,
-    radius: 10,
-    stroke: "red",
-    strokeWidth: 5,
-    draggable: true,
   };
 </script>
 
@@ -38,4 +31,14 @@
   }}
 />
 
-<Circle bind:config={circleConfig} on:dragend={onDragEnd} />
+<Circle
+  config={{
+    x: xOffset + cornerPoint.x,
+    y: yOffset - cornerPoint.y,
+    radius: 10,
+    stroke: "red",
+    strokeWidth: 5,
+    draggable: true,
+  }}
+  on:dragend={onDragEnd}
+/>

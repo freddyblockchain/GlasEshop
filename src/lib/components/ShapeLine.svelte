@@ -1,12 +1,12 @@
 <script lang="ts">
   import { Line, Text } from "svelte-konva";
-  import { xOffset, yOffset } from "../../store";
+  import { calculateDistance, xOffset, yOffset } from "../../store";
   import { onMount } from "svelte";
 
   export let point1: CornerPoint = { x: 0, y: 0, letter: "" };
   export let point2: CornerPoint = { x: 0, y: 0, letter: "" };
 
-  const middlePoint = {
+  $: middlePoint = {
     x: (point1.x + point2.x) / 2 + xOffset,
     y: (-point1.y - point2.y) / 2 + yOffset,
   };
@@ -24,17 +24,6 @@
       }
     }, 10);
   });
-
-  const calculateDistance = (
-    x1: number,
-    y1: number,
-    x2: number,
-    y2: number
-  ) => {
-    const xDiff = x2 - x1;
-    const yDiff = y2 - y1;
-    return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
-  };
 
   const distance = calculateDistance(point1.x, point1.y, point2.x, point2.y);
 </script>

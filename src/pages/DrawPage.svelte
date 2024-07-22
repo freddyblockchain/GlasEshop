@@ -26,12 +26,12 @@
     nrOfPoints.subscribe((number) => {
       if (!isNaN(number)) {
         if ($nrOfPoints == 6) {
-          const point1 = { x: 0 - windowWidthOffset, y: 0, letter: "A" };
-          const point2 = { x: 100 - windowWidthOffset, y: 0, letter: "B" };
-          const point3 = { x: 100 - windowWidthOffset, y: 100, letter: "C" };
-          const point4 = { x: 200 - windowWidthOffset, y: 100, letter: "D" };
-          const point5 = { x: 200 - windowWidthOffset, y: 200, letter: "E" };
-          const point6 = { x: 0 - windowWidthOffset, y: 200, letter: "F" };
+          const point1 = { x: 0, y: 0, letter: "A" };
+          const point2 = { x: 100, y: 0, letter: "B" };
+          const point3 = { x: 100, y: 100, letter: "C" };
+          const point4 = { x: 200, y: 100, letter: "D" };
+          const point5 = { x: 200, y: 200, letter: "E" };
+          const point6 = { x: 0, y: 200, letter: "F" };
           isDone = true;
           cornerPoints.update(() => [
             point1,
