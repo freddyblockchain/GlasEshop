@@ -12,7 +12,13 @@
   import ShapeLine from "$lib/components/ShapeLine.svelte";
   import NumberInput from "$lib/components/NumberInput.svelte";
   import NodeCircle from "$lib/components/NodeCircle.svelte";
-  import { windowWidthOffset } from "$lib/constants";
+  import {
+    fivePointArray,
+    fourPointArray,
+    sixPointArray,
+    threePointArray,
+    windowWidthOffset,
+  } from "$lib/constants";
   let points;
   var isDone = false;
 
@@ -25,23 +31,21 @@
   $: {
     nrOfPoints.subscribe((number) => {
       if (!isNaN(number)) {
+        let pointArray: CornerPoint[] = [];
         if ($nrOfPoints == 6) {
-          const point1 = { x: 0, y: 0, letter: "A" };
-          const point2 = { x: 100, y: 0, letter: "B" };
-          const point3 = { x: 100, y: 100, letter: "C" };
-          const point4 = { x: 200, y: 100, letter: "D" };
-          const point5 = { x: 200, y: 200, letter: "E" };
-          const point6 = { x: 0, y: 200, letter: "F" };
-          isDone = true;
-          cornerPoints.update(() => [
-            point1,
-            point2,
-            point3,
-            point4,
-            point5,
-            point6,
-          ]);
+          pointArray = sixPointArray;
         }
+        if ($nrOfPoints == 5) {
+          pointArray = fivePointArray;
+        }
+        if ($nrOfPoints == 4) {
+          pointArray = fourPointArray;
+        }
+        if ($nrOfPoints == 3) {
+          pointArray = threePointArray;
+        }
+        isDone = true;
+        cornerPoints.update(() => pointArray);
       }
     });
   }
