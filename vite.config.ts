@@ -7,16 +7,15 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [svelte()],
-  css:{
-    postcss
+  css: {
+    postcss: './postcss.config.js'
   },
   resolve: {
     alias: {
-      $lib: path.resolve("./src/lib"),
+      $lib: path.resolve(__dirname, './src/lib'),
     },
   },
-  base: '/GlasEshop/',
   build: {
-    outDir: 'dist', // this should match the path in your workflow
+    outDir: 'dist',
   },
-})
+});
