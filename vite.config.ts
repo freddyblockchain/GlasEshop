@@ -16,4 +16,7 @@ export default defineConfig({
     },
   },
   base: '/GlasEshop/',
+  build: {
+    outDir: 'dist', // this should match the path in your workflow
+  },
 })
