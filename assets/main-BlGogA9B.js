@@ -1,4 +1,4 @@
-console.log("hello");
+console.log("hello2");
 var xo = Object.defineProperty;
 var Po = (n, t, e) =>
   t in n
