@@ -76,9 +76,9 @@
   </ul>
 </div> -->
 <div class="flex flex-row">
-  <div class="flex">
+  <div class="flex border-4 border-black m-4">
     <Stage
-      config={{ width: window.innerWidth / 2, height: window.innerHeight }}
+      config={{ width: window.innerWidth / 2, height: window.innerHeight / 2}}
     >
       <Layer>
         {#each $cornerPoints as { x, y }, index}

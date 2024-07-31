@@ -25,7 +25,7 @@
     }, 10);
   });
 
-  $: distance = calculateDistance(point1.x, point1.y, point2.x, point2.y);
+  $: distance = calculateDistance(point1, point2);
 </script>
 
 <Line
@@ -47,6 +47,7 @@
   config={{
     x: middlePoint.x - 8,
     y: middlePoint.y,
-    text: distance + " cm",
+    text: parseFloat(distance.toFixed(2)) + " cm",
+    fontSize: 15,
   }}
 />

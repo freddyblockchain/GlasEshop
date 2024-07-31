@@ -11,23 +11,17 @@
     const x = e.detail.target.x();
     const y = e.detail.target.y();
 
-    console.log("x us : " + x, "y is :" + y);
-
-    console.log("x offset is;: " + xOffset);
-
     updatePoint(x - xOffset, yOffset - y, index);
 
-    console.log("you even here?");
-
-    // Additional logic using x and y
   };
 </script>
 
 <Text
   config={{
-    x: xOffset + cornerPoint.x - 4,
+    x: xOffset + cornerPoint.x - 8,
     y: yOffset - cornerPoint.y + 12,
     text: cornerPoint.letter,
+    fontSize: 20,
   }}
 />
 
