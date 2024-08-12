@@ -7,7 +7,7 @@
     nrOfPoints,
     xOffset,
     yOffset,
-  } from "../store";
+  } from "../../store";
   import InputRow from "$lib/components/InputRow.svelte";
   import ShapeLine from "$lib/components/ShapeLine.svelte";
   import NumberInput from "$lib/components/NumberInput.svelte";
@@ -78,7 +78,7 @@
 <div class="flex flex-row">
   <div class="flex border-4 border-black m-4">
     <Stage
-      config={{ width: window.innerWidth / 2, height: window.innerHeight / 2}}
+      config={{ width: window.innerWidth / 2, height: window.innerHeight / 2 }}
     >
       <Layer>
         {#each $cornerPoints as { x, y }, index}
