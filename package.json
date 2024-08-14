@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy" : "gh-pages -d dist",
+    "deploy": "gh-pages -d dist",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "help": "gh-pages --help"
   },
@@ -28,12 +28,13 @@
   },
   "dependencies": {
     "add": "^2.0.6",
-    "bits-ui": "^0.21.3",
+    "bits-ui": "^0.21.13",
     "buffer": "^6.0.3",
     "button": "^1.1.1",
     "clsx": "^2.1.0",
     "init": "^0.1.2",
     "konva": "^9.3.12",
+    "lucide-svelte": "^0.427.0",
     "shadcn-svelte": "^0.10.3",
     "svelte-add": "^2024.2.16-0.0",
     "svelte-konva": "^0.3.1",
