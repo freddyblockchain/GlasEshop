@@ -1,6 +1,11 @@
 <script lang="ts">
   import { Circle, Text, type KonvaDragTransformEvent } from "svelte-konva";
-  import { cornerPoints, updatePoint, xOffset, yOffset } from "../../store";
+  import {
+    cornerPoints,
+    updatePoint,
+    xOffset,
+    yOffset,
+  } from "../../stores/drawingStore";
   import type { KonvaEventObject } from "konva/lib/Node";
 
   const radius = 15;
@@ -12,7 +17,6 @@
     const y = e.detail.target.y();
 
     updatePoint(x - xOffset, yOffset - y, index);
-
   };
 </script>
 

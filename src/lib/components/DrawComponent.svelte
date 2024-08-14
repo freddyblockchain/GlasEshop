@@ -7,7 +7,7 @@
     nrOfPoints,
     xOffset,
     yOffset,
-  } from "../../store";
+  } from "../../stores/drawingStore";
   import InputRow from "$lib/components/InputRow.svelte";
   import ShapeLine from "$lib/components/ShapeLine.svelte";
   import NumberInput from "$lib/components/NumberInput.svelte";

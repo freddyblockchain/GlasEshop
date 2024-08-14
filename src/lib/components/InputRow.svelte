@@ -7,7 +7,7 @@
     updatePoint,
     calculateAngle,
     rotatePoint,
-  } from "../../store";
+  } from "../../stores/drawingStore";
   import { Button } from "./ui/button";
 
   export let x = 0;
@@ -16,24 +16,36 @@
   export let index = 0;
 
   let nextPointIndex = (index + 1) % $cornerPoints.length;
-  let prevPointIndex = (index - 1) >= 0 ? index - 1 : $cornerPoints.length - 1
+  let prevPointIndex = index - 1 >= 0 ? index - 1 : $cornerPoints.length - 1;
 
-  let distance: number
-  let angle: number
+  let distance: number;
+  let angle: number;
 
   $: {
     nextPointIndex = (index + 1) % $cornerPoints.length;
-    prevPointIndex = (index - 1) >= 0 ? index - 1 : $cornerPoints.length - 1
-    distance = parseFloat(calculateDistance($cornerPoints[index], $cornerPoints[nextPointIndex]).toFixed(2));
-    angle = parseFloat(calculateAngle($cornerPoints[index], $cornerPoints[nextPointIndex], $cornerPoints[prevPointIndex]).toFixed(1))
+    prevPointIndex = index - 1 >= 0 ? index - 1 : $cornerPoints.length - 1;
+    distance = parseFloat(
+      calculateDistance(
+        $cornerPoints[index],
+        $cornerPoints[nextPointIndex]
+      ).toFixed(2)
+    );
+    angle = parseFloat(
+      calculateAngle(
+        $cornerPoints[index],
+        $cornerPoints[nextPointIndex],
+        $cornerPoints[prevPointIndex]
+      ).toFixed(1)
+    );
   }
-
 
   const text =
     $cornerPoints[index].letter + "-" + $cornerPoints[nextPointIndex].letter;
 
   const distanceChanged = (event: Event) => {
-    const newDistance: number = Number((event.target as HTMLSelectElement).value);
+    const newDistance: number = Number(
+      (event.target as HTMLSelectElement).value
+    );
     const newPointBasedOnDistance = getNewPointCoordinates(
       $cornerPoints[index],
       $cornerPoints[nextPointIndex],
@@ -50,15 +62,15 @@
 
   const angleChanged = (event: Event) => {
     const newAngle: number = Number((event.target as HTMLSelectElement).value);
-    const angleDifference = angle - newAngle
-    const newB = rotatePoint($cornerPoints[index],$cornerPoints[nextPointIndex], angleDifference);
-    updatePoint(
-      newB.x,
-      newB.y,
-      nextPointIndex
+    const angleDifference = angle - newAngle;
+    const newB = rotatePoint(
+      $cornerPoints[index],
+      $cornerPoints[nextPointIndex],
+      angleDifference
     );
-    angle = newAngle
-  }
+    updatePoint(newB.x, newB.y, nextPointIndex);
+    angle = newAngle;
+  };
 </script>
 
 <div class="flex justify-center items-center m-2">
