@@ -39,6 +39,11 @@
     bind:value={endCap}
   />
   <PutInCardComponent
-    cartItem={{ glasPoints: $cornerPoints, glasInfo: glasInfo }}
+    cartItem={{
+      glasPoints: $cornerPoints,
+      glasInfo: glasInfo,
+      nrOfItems: 1,
+      productName: "badevæg",
+    }}
   />
 </div>

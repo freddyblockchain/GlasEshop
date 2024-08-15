@@ -4,7 +4,6 @@
   import {
     cornerPoints,
     newPoint,
-    nrOfPoints,
     xOffset,
     yOffset,
   } from "../../stores/drawingStore";
@@ -19,40 +18,8 @@
     threePointArray,
     windowWidthOffset,
   } from "$lib/constants";
+  import { onMount } from "svelte";
   let points;
-  var isDone = false;
-
-  $: {
-    cornerPoints.subscribe((state) => {
-      points = state;
-    });
-  }
-
-  $: {
-    nrOfPoints.subscribe((number) => {
-      if (!isNaN(number)) {
-        let pointArray: CornerPoint[] = [];
-        if ($nrOfPoints == 6) {
-          pointArray = sixPointArray;
-        }
-        if ($nrOfPoints == 5) {
-          pointArray = fivePointArray;
-        }
-        if ($nrOfPoints == 4) {
-          pointArray = fourPointArray;
-        }
-        if ($nrOfPoints == 3) {
-          pointArray = threePointArray;
-        }
-        isDone = true;
-        cornerPoints.update(() => pointArray);
-      }
-    });
-  }
-
-  const setIsDone = () => {
-    isDone = true;
-  };
 </script>
 
 <NumberInput />

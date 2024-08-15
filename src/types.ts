@@ -13,7 +13,9 @@ interface GlasInfo{
 }
 
 interface CartItem{
+    productName: string
     glasPoints: CornerPoint[]
     glasInfo: GlasInfo
+    nrOfItems: number
 }
 

@@ -1,7 +1,14 @@
-import { writable, type Writable } from 'svelte/store';
+import { fourPointArray } from '$lib/constants';
+import { writable, type Writable, get } from 'svelte/store';
 
-export const cornerPoints: Writable<CornerPoint[]> = writable([]);
-export const nrOfPoints = writable(4);
+const storedPoints = sessionStorage.getItem("currentPoints");
+export const cornerPoints: Writable<CornerPoint[]> = writable(storedPoints ? JSON.parse(storedPoints): fourPointArray);
+
+cornerPoints.subscribe(newPoints => {
+  sessionStorage.setItem("currentPoints", JSON.stringify(newPoints));
+  console.log("setting new points! " + JSON.stringify(newPoints))
+});
+
 export const newPoint = writable(false);
 
 export const initialValue = 75;
