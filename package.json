@@ -32,6 +32,8 @@
     "buffer": "^6.0.3",
     "button": "^1.1.1",
     "clsx": "^2.1.0",
+    "flowbite-svelte": "^0.46.15",
+    "formsnap": "^1.0.1",
     "init": "^0.1.2",
     "konva": "^9.3.12",
     "lucide-svelte": "^0.427.0",
@@ -39,7 +41,9 @@
     "svelte-add": "^2024.2.16-0.0",
     "svelte-konva": "^0.3.1",
     "svelte-routing": "^2.12.0",
+    "sveltekit-superforms": "^2.17.0",
     "tailwind-merge": "^2.2.2",
-    "tailwind-variants": "^0.2.1"
+    "tailwind-variants": "^0.2.1",
+    "zod": "^3.23.8"
   }
 }

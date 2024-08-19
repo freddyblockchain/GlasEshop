@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="flex bg-black flex-row items-center justify-center"
+  class="flex bg-black flex-row items-center justify-center w-full"
   id="footer-default"
 >
   <div>

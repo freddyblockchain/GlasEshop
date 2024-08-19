@@ -5,6 +5,7 @@
   import Kontakt from "./pages/Kontakt.svelte";
   import Faq from "./pages/FAQ.svelte";
   import Kurv from "./pages/Kurv.svelte";
+  import Betaling from "./pages/Betaling.svelte";
 </script>
 
 <Router>
@@ -13,4 +14,5 @@
   <Route path="/Faq" component={Faq} />
   <Route path="/Kontakt" component={Kontakt} />
   <Route path="/Kurv" component={Kurv} />
+  <Route path="/Betaling" component={Betaling} />
 </Router>

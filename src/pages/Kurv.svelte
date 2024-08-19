@@ -14,7 +14,7 @@
           <p class="text-sm">Belægning: {item.glasInfo.Belægning}</p>
           <p class="text-sm">EndeKappe: {item.glasInfo.EndeKappe}</p>
         </div>
-        <div class="flex">
+        <div class="flex ml-5">
           <input
             type="number"
             id="nrOfItem"
@@ -27,5 +27,10 @@
       </div>
     {/each}
   </div>
-  <Button class="m-10">Gå til Betaling</Button>
+  <div class="flex flex-col justify-center items-center">
+    <p>Total: 100 kr</p>
+    <a href={"/Betaling"}>
+      <Button class="m-4">Gå til Ordre</Button>
+    </a>
+  </div>
 </div>

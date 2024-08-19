@@ -5,7 +5,9 @@
 </script>
 
 <main>
-  <Navbar />
-  <Router />
-  <Footer />
+  <div class="flex flex-col justify-center items-center">
+    <Navbar />
+    <Router />
+    <Footer />
+  </div>
 </main>
