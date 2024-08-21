@@ -38,5 +38,5 @@
     strokeWidth: 5,
     draggable: true,
   }}
-  on:dragend={onDragEnd}
+  on:dragmove={onDragEnd}
 />

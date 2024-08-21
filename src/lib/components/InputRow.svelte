@@ -74,27 +74,28 @@
 </script>
 
 <div class="flex justify-center items-center m-2">
-  {$cornerPoints[index].letter}
+  <p class="text-xl">{$cornerPoints[index].letter}</p>
 </div>
 <div class="flex flex-row">
-  <p>Vinkel</p>
-  <input
-    class="w-36 border-2 border-gray-300 focus:border-blue-500 rounded-md p-1"
-    type="number"
-    step="0.1"
-    value={angle}
-    on:change={angleChanged}
-    placeholder="Vinkel"
-  />
-
-  <div class="flex flexrow">
-    <h4>{text}:</h4>
+  <div class="flex flex-row items-center">
+    <h4 class="text-center mr-2">{text}:</h4>
     <input
       class="w-36 border-2 border-gray-300 focus:border-blue-500 rounded-md p-1"
       type="number"
       value={distance}
       step="0.1"
       on:change={distanceChanged}
+    />
+  </div>
+  <div class="flex flex-row ml-2 items-center">
+    <p class="mr-2">Vinkel</p>
+    <input
+      class="w-36 border-2 border-gray-300 focus:border-blue-500 rounded-md p-1"
+      type="number"
+      step="0.1"
+      value={angle}
+      on:change={angleChanged}
+      placeholder="Vinkel"
     />
   </div>
 </div>
