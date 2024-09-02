@@ -19,3 +19,13 @@ export const fivePointArray = [point1, B, { x: 200, y: 200, letter: "C" }, D,  {
 export const fourPointArray = [point1, B, { x: 200, y: 200, letter: "C" }, { x: 0, y: 200, letter: "D" }]
 
 export const threePointArray = [point1, B, { x: 200, y: 200, letter: "C" }]
+
+export const maxCmWidth = 1000
+export const maxCmHeight = 1000
+export const maxScreenPixelsWidth = 400
+export const maxScreenPixelsHeight = 400
+
+export const xOffset = 100
+export const yOffset = 300
+
+export const scaleAmount = 2.5

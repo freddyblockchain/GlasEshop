@@ -1,14 +1,7 @@
 <script lang="ts">
   import { Button } from "$lib/components/ui/button";
   import { Stage, Layer, Rect, Line } from "svelte-konva";
-  import {
-    cornerPoints,
-    maxScreenPixelsHeight,
-    maxScreenPixelsWidth,
-    newPoint,
-    xOffset,
-    yOffset,
-  } from "../../stores/drawingStore";
+  import { cornerPoints, newPoint } from "../../stores/drawingStore";
   import InputRow from "$lib/components/InputRow.svelte";
   import ShapeLine from "$lib/components/ShapeLine.svelte";
   import NumberInput from "$lib/components/NumberInput.svelte";
@@ -16,6 +9,8 @@
   import {
     fivePointArray,
     fourPointArray,
+    maxScreenPixelsHeight,
+    maxScreenPixelsWidth,
     sixPointArray,
     threePointArray,
     windowWidthOffset,

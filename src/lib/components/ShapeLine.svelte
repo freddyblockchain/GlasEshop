@@ -1,11 +1,8 @@
 <script lang="ts">
   import { Line, Text } from "svelte-konva";
-  import {
-    calculateDistance,
-    xOffset,
-    yOffset,
-  } from "../../stores/drawingStore";
+  import { calculateDistance } from "../../stores/drawingStore";
   import { onMount } from "svelte";
+  import { scaleAmount, xOffset, yOffset } from "$lib/constants";
 
   export let point1: CornerPoint = { x: 0, y: 0, letter: "" };
   export let point2: CornerPoint = { x: 0, y: 0, letter: "" };
