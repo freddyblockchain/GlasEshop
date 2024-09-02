@@ -3,6 +3,8 @@
   import { Stage, Layer, Rect, Line } from "svelte-konva";
   import {
     cornerPoints,
+    maxScreenPixelsHeight,
+    maxScreenPixelsWidth,
     newPoint,
     xOffset,
     yOffset,
@@ -42,10 +44,10 @@
     </li>
   </ul>
 </div> -->
-<div class="flex flex-row">
+<div class="flex flex-col sm:flex-row">
   <div class="flex border-4 border-black m-4">
     <Stage
-      config={{ width: window.innerWidth / 2, height: window.innerHeight / 2 }}
+      config={{ width: maxScreenPixelsWidth, height: maxScreenPixelsHeight }}
     >
       <Layer>
         {#each $cornerPoints as { x, y }, index}

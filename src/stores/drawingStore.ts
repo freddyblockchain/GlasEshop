@@ -1,6 +1,11 @@
 import { fourPointArray } from '$lib/constants';
 import { writable, type Writable, get } from 'svelte/store';
 
+export const maxCmWidth = 1000
+export const maxCmHeight = 1000
+export const maxScreenPixelsWidth = 400
+export const maxScreenPixelsHeight = 400
+
 const storedPoints = sessionStorage.getItem("currentPoints");
 export const cornerPoints: Writable<CornerPoint[]> = writable(storedPoints ? JSON.parse(storedPoints): fourPointArray);
 
@@ -15,7 +20,7 @@ export const initialValue = 75;
 //export const xOffset = window.innerWidth / 2 - initialValue;
 //export const yOffset = 300;
 
-export const xOffset = 300
+export const xOffset = 100
 export const yOffset = 300
 
 export const updatePoint = (x: number, y: number, index: number) => {
