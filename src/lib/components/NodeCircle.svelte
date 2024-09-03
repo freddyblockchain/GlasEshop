@@ -3,6 +3,7 @@
   import { cornerPoints, updatePoint } from "../../stores/drawingStore";
   import type { KonvaEventObject } from "konva/lib/Node";
   import {
+    inScreenBounds,
     maxCmHeight,
     maxScreenPixelsHeight,
     maxScreenPixelsWidth,
@@ -20,12 +21,7 @@
     const x = e.detail.target.x();
     const y = e.detail.target.y();
 
-    if (
-      x >= 0 &&
-      x <= maxScreenPixelsWidth &&
-      y >= 0 &&
-      y <= maxScreenPixelsHeight
-    ) {
+    if (inScreenBounds(x, y)) {
       updatePoint(x - xOffset, yOffset - y, index);
     } else {
       if (x < 0) shape.x(0);

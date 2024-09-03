@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { inCmBounds, inScreenBounds } from "$lib/constants";
   import {
     calculateDistance,
     cornerPoints,
@@ -20,10 +21,13 @@
 
   let distance: number;
   let angle: number;
+  let text: string;
 
   $: {
     nextPointIndex = (index + 1) % $cornerPoints.length;
     prevPointIndex = index - 1 >= 0 ? index - 1 : $cornerPoints.length - 1;
+    text =
+      $cornerPoints[index].letter + "-" + $cornerPoints[nextPointIndex].letter;
     distance = parseFloat(
       calculateDistance(
         $cornerPoints[index],
@@ -39,25 +43,34 @@
     );
   }
 
-  const text =
-    $cornerPoints[index].letter + "-" + $cornerPoints[nextPointIndex].letter;
-
   const distanceChanged = (event: Event) => {
     const newDistance: number = Number(
       (event.target as HTMLSelectElement).value
     );
-    const newPointBasedOnDistance = getNewPointCoordinates(
-      $cornerPoints[index],
-      $cornerPoints[nextPointIndex],
-      distance,
-      newDistance
-    );
-    updatePoint(
-      newPointBasedOnDistance.x,
-      newPointBasedOnDistance.y,
-      nextPointIndex
-    );
-    distance = newDistance;
+    let indexToUpdate = 0;
+    let newCornerPoint: CornerPoint = { letter: "a", x: 0, y: 0 };
+    if (index >= $cornerPoints.length / 2) {
+      newCornerPoint = getNewPointCoordinates(
+        $cornerPoints[index],
+        $cornerPoints[nextPointIndex],
+        distance,
+        newDistance
+      );
+      indexToUpdate = nextPointIndex;
+    } else {
+      newCornerPoint = getNewPointCoordinates(
+        $cornerPoints[nextPointIndex],
+        $cornerPoints[index],
+        distance,
+        newDistance
+      );
+      indexToUpdate = index;
+    }
+    console.log(newCornerPoint);
+    if (inCmBounds(newCornerPoint.x, newCornerPoint.y)) {
+      updatePoint(newCornerPoint.x, newCornerPoint.y, indexToUpdate);
+      distance = newDistance;
+    }
   };
 
   const angleChanged = (event: Event) => {

@@ -29,3 +29,17 @@ export const xOffset = 100
 export const yOffset = 300
 
 export const scaleAmount = 2.5
+
+export function inScreenBounds(x: number, y:number):Boolean{
+    return  x >= 0 &&
+    x <= maxScreenPixelsWidth &&
+    y >= 0 &&
+    y <= maxScreenPixelsHeight
+}
+
+export function inCmBounds(x: number, y:number):Boolean{
+    return  x >= -100 &&
+    x <= maxScreenPixelsWidth - 100 &&
+    y >= -100 &&
+    y <= maxScreenPixelsHeight - 100
+}

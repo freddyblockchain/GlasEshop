@@ -6,7 +6,6 @@ export const cornerPoints: Writable<CornerPoint[]> = writable(storedPoints ? JSO
 
 cornerPoints.subscribe(newPoints => {
   sessionStorage.setItem("currentPoints", JSON.stringify(newPoints));
-  console.log("setting new points! " + JSON.stringify(newPoints))
 });
 
 export const newPoint = writable(false);
