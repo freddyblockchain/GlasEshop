@@ -81,8 +81,10 @@
       $cornerPoints[nextPointIndex],
       angleDifference
     );
-    updatePoint(newB.x, newB.y, nextPointIndex);
-    angle = newAngle;
+    if (inCmBounds(newB.x, newB.y)) {
+      updatePoint(newB.x, newB.y, nextPointIndex);
+      angle = newAngle;
+    }
   };
 </script>
 
