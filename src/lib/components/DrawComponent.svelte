@@ -40,7 +40,10 @@
   </ul>
 </div> -->
 <div class="flex flex-col sm:flex-row">
-  <div class="flex border-4 border-black m-4">
+  <div
+    class="flex border-4 border-black m-4 overflow-y-auto h-full"
+    style="max-height: {maxScreenPixelsHeight + 15}px;"
+  >
     <Stage
       config={{ width: maxScreenPixelsWidth, height: maxScreenPixelsHeight }}
     >
