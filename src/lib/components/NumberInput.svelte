@@ -32,12 +32,12 @@
 
 <div
   class="flex flex-col justify-center items-center m-10"
-  on:change={handlePointsChange}
 >
   <h4>Antal hjørner:</h4>
   <select
     class="border border-gray-300 rounded p-2"
-    bind:value={selectedOption}
+    value={selectedOption}
+    on:change={handlePointsChange}
   >
     <option value="3">3</option>
     <option value="4">4</option>
