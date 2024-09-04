@@ -22,11 +22,11 @@ export const threePointArray = [point1, B, { x: 200, y: 200, letter: "C" }]
 
 export const maxCmWidth = 1000
 export const maxCmHeight = 1000
-export const maxScreenPixelsWidth = 360
-export const maxScreenPixelsHeight = 360
+export const maxScreenPixelsWidth = 320
+export const maxScreenPixelsHeight = 320
 
-export const xOffset = 80
-export const yOffset = 280
+export const xOffset = 60
+export const yOffset = 260
 
 export const scaleAmount = maxCmHeight / maxScreenPixelsHeight
 

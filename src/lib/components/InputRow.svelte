@@ -95,7 +95,7 @@
   <div class="flex flex-row items-center">
     <h4 class="text-center mr-2">{text}:</h4>
     <input
-      class="w-36 border-2 border-gray-300 focus:border-blue-500 rounded-md p-1"
+      class="w-24 border-2 border-gray-300 focus:border-blue-500 rounded-md p-1"
       type="number"
       value={distance}
       step="0.1"
@@ -105,7 +105,7 @@
   <div class="flex flex-row ml-2 items-center">
     <p class="mr-2">Vinkel</p>
     <input
-      class="w-36 border-2 border-gray-300 focus:border-blue-500 rounded-md p-1"
+      class="w-20 border-2 border-gray-300 focus:border-blue-500 rounded-md p-1"
       type="number"
       step="0.1"
       value={angle}
