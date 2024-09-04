@@ -22,13 +22,13 @@ export const threePointArray = [point1, B, { x: 200, y: 200, letter: "C" }]
 
 export const maxCmWidth = 1000
 export const maxCmHeight = 1000
-export const maxScreenPixelsWidth = 400
-export const maxScreenPixelsHeight = 400
+export const maxScreenPixelsWidth = 360
+export const maxScreenPixelsHeight = 360
 
-export const xOffset = 100
-export const yOffset = 300
+export const xOffset = 80
+export const yOffset = 280
 
-export const scaleAmount = 2.5
+export const scaleAmount = maxCmHeight / maxScreenPixelsHeight
 
 export function inScreenBounds(x: number, y:number):Boolean{
     return  x >= 0 &&

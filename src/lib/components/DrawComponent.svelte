@@ -58,7 +58,7 @@
       </Layer>
     </Stage>
   </div>
-  <div class="flex-col">
+  <div class="flex-col m-4">
     {#each $cornerPoints as { x, y }, index}
       <div>
         <InputRow {x} {y} {index} />
